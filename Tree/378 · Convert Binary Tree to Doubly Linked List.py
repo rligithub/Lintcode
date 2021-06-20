@@ -10,41 +10,44 @@ class TreeNode:
         self.val = val
         self.left, self.right = None, None
 
-
 class Solution:
     """
     @param root: The root of tree
     @return: the head of doubly list node
     """
+
     def bstToDoublyList(self, root):
+        head, tail = self.helper(root)
+        return head
 
-        return self.helper(root)[0]
-
-    def helper(self,root):
+    def helper(self, root):
         if not root:
-            return None
+            return None, None
 
-        left_last = self.helper(root.left)
-        right_last = self.helper(root.right)
+        left_head, left_tail = self.helper(root.left)
+        right_head, right_tail = self.helper(root.right)
 
-        node = DoublyListNode(root.val)
+        curr_node = DoublyListNode(root.val)
+        curr_head = curr_node
+        curr_tail = curr_node
+        if left_head and left_tail:
+            curr_first = left_head
+            left_tail.next = curr_node
+            curr_node.prev = left_tail
+        if right_head and right_tail:
+            curr_last = right_tail
+            curr_node.next = right_head
+            right_head.prev = curr_node
 
-        if left_last:
-            left_last.next = root.right
-            root.right.prev= left_last
-
-            root.next = root.left
-            root.left.prev = root
-            root.left = None
-            root.right = None
-        return right_last or left_last or root
+        return curr_head, curr_tail
 
 
-root = TreeNode(4)
-root.left = TreeNode(2)
-root.right = TreeNode(5)
-root.left.left = TreeNode(1)
-root.left.right = TreeNode(3)
+
+
+
+root = TreeNode(3)
+root.left = TreeNode(4)
+root.right = TreeNode(1)
 
 a= Solution()
 print(a.bstToDoublyList(root))

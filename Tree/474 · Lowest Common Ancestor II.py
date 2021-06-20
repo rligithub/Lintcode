@@ -16,7 +16,7 @@ class Solution:
     """
 
     def lowestCommonAncestorII(self, root, A, B):
-
+        # to get the cross point of A and B， need to run A+B length for each point.
         if not root:
             return None
         PA = A
@@ -34,11 +34,9 @@ class Solution:
 
 
 
-
-
 root = ParentTreeNode(4)
-root.left = ParentTreeNode(3)
-root.right = ParentTreeNode(7)
+A= root.left = ParentTreeNode(3)
+B= root.right = ParentTreeNode(7)
 root.right.left = ParentTreeNode(5)
 root.right.right = ParentTreeNode(6)
 root.left.parent = root
@@ -46,6 +44,5 @@ root.right.parent = root
 root.right.left.parent = root.right
 root.right.right.parent = root.right
 a= Solution()
-A= 3
-B=7
-print(a.lowestCommonAncestorII(root,A,B))
+
+print((a.lowestCommonAncestorII(root,A,B)).val)

@@ -17,23 +17,28 @@ class Solution:
     """
 # method 1
     def lowestCommonAncestor3(self, root, A, B):
-        foundA, foundB = False, False
+        #step1 - check if both A and B exist in the tree
+        #step2 - if yes, run classic LCA solution
+        self.foundA = False
+        self.foundB = False
 
-        res = self.helper(root,A,B)
-        if foundA and foundB:
-            return res
-        else:
+        res = self.LCA(root,A,B)
+        if not self.foundA or not self.foundB:
             return None
+        else:
+            return res
 
-    def helper(self,root,A, B):
+    def LCA(self,root,A, B):
         if not root:
             return None
-        left = self.helper(root.left,A,B)
-        right = self.helper(root.right,A,B)
+        left = self.LCA(root.left,A,B)
+        right = self.LCA(root.right,A,B)
 
-        if root == A or B:
-            foundA = True
-            foundB = True
+        if root == A:
+            self.foundA =True
+            return root
+        if root == B:
+            self.foundB = True
             return root
 
         if left and right:
@@ -45,31 +50,14 @@ class Solution:
 
         return None
 
-#method 2:
-    def lowestCommonAncestor33(self, root, A, B):
-        if not root or root == A or root ==B:
-            return root
-        left = self.lowestCommonAncestor33(root.left,A,B)
-        right = self.lowestCommonAncestor33(root.right,A,B)
-
-        if left and right:
-            return root
-        elif left:
-            return left
-        elif right:
-            return right
-        else:
-            return None
-
 
 
 
 root = TreeNode(4)
 root.left = TreeNode(3)
 root.right = TreeNode(7)
-root.right.left = TreeNode(5)
-root.right.right = TreeNode(6)
+A= root.right.left = TreeNode(5)
+B= root.right.right = TreeNode(6)
 a= Solution()
-A=5
-B=6
-print(a.lowestCommonAncestor3(root,A,B))
+
+print(a.lowestCommonAncestor3(root,A,B).val)
