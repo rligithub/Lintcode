@@ -44,6 +44,26 @@ class Solution:
                     cur = cur.left
         return res
 
+
+class Solution2:
+    """
+    @param root: A Tree
+    @return: Inorder in ArrayList which contains node values.
+    """
+
+    def inorderTraversal(self, root):
+        # write your code here
+        res = []
+        stack = []
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            res.append(root.val)
+            root = root.right
+        return res
+
 # whileloop: go left until it's last left node
 # whileloop: stack: pop() , remember current position
 # If: check if there is any right node: if yes, remember current position

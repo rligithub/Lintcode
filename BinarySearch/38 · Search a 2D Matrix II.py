@@ -27,6 +27,7 @@ matrix = [
       [2, 4, 7, 8],
       [3, 5, 9, 10]
     ]
+
 target = 7
 
 print(searchMatrix(0,matrix,target))

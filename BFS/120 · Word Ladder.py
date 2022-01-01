@@ -19,8 +19,8 @@ class Solution:
         count =1
         visited = set()
         visited.add(start)
-        dict.add(start)
-        dict.add(end)
+        dict.append(start)
+        dict.append(end)
         while queue:
             count += 1
             size = len(queue)
@@ -113,3 +113,11 @@ class Solution3: #double queue
             q1 = new_q
         return -1
 
+
+
+start ="abc"
+end = "xbf"
+dict =["hot","abf","dog","lot"]
+
+a = Solution()
+print(a.ladderLength(start, end, dict))

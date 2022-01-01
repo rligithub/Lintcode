@@ -20,14 +20,19 @@ class Solution:
     def helper(self,root):
         if not root:
             return None
+        # 左半部分的最后一个node （linkedlist的末尾node）
         left_last = self.helper(root.left)
+        # 右半部分的最后一个node （linkedlist的末尾node）
         right_last = self.helper(root.right)
 
         if left_last:
+            # 左孩子的右边（next）指向 右孩子
             left_last.right = root.right
+            # 父节点的右边（next）指向 左孩子
             root.right = root.left
+            # 父节点的左边 断开
             root.left =None
-
+m
         return right_last or left_last or root
 
 

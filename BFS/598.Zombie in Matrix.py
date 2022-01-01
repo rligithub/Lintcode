@@ -1,6 +1,3 @@
-import collections
-
-
 class Solution:
     """
     @param grid: a 2D integer grid
@@ -10,32 +7,33 @@ class Solution:
         if not grid or not grid[0]:
             return -1
 
-        m,n = len(grid[0]), len(grid)
+        n, m = len(grid[0]), len(grid)
         queue = collections.deque()
 
-        for j in range(m):
-            for i in range(n):
+        for j in range(n):
+            for i in range(m):
                 if grid[i][j] == 1:
                     queue.append([i,j])
         day = 0
-        count = 0
+
         while queue:
+            size = len(queue)
             day += 1
-            count +=1
-            x,y = queue.popleft()
-            for dx,dy in (0,1),(0,-1),(1,0),(-1,0):
-                xx= x + dx
-                yy =y + dy
-                if 0 <= xx < m and 0 <= yy < n and grid[xx][yy] == 0:
-                    queue.append([xx, yy])
-                    grid[xx][yy] = 1
+            for k in range(size):
+                x,y = queue.popleft()
+                for dx,dy in (1, 0), (-1, 0), (0, 1), (0, -1):
+                    xx = x + dx
+                    yy = y + dy
+                    if xx >= 0 and xx < m and yy >= 0 and yy < n and grid[xx][yy] == 0:
+                        grid[xx][yy] = 1
+                        queue.append([xx, yy])
 
 
-        for j in range(m):
-            for i in range(n):
+        for j in range(n):
+            for i in range(m):
                 if grid[i][j] == 0:
                     return -1
-        return day
+        return day - 1
 
 
 

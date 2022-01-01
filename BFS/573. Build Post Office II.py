@@ -7,7 +7,8 @@ class Solution:
     @return: An integer
     """
     def shortestDistance(self, grid):
-        # from houses to each empty lands, record the distances to each houses, sum together
+        # Record dist sum from houses to each empty lands, record how many houses can be reached to each empty lands
+        # BFS --> 对于每个house找相邻的所有空地，保存 每块空地到这个house的距离 和 每块空地能到达的house数
         # for loop to find the where to build the post office:
         # 1. empty lands -->  grid[x][y] == 0
         # 2. can reach to each houses  --> reach[x][y] = houses_num
@@ -29,7 +30,7 @@ class Solution:
         res = float('inf')
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == 0 and reach[(i,j)] == houses_num and distances[(i,j)]>0:
+                if grid[i][j] == 0 and reach[(i,j)] == houses_num:
                     res = min(res, distances[(i,j)])
 
         if res < float('inf'):
