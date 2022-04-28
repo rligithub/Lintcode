@@ -26,7 +26,7 @@ class Solution:
         # 已知： 倒二 > 倒一， 倒一 < cur ； 比较倒二和cur，较小者作为 倒一 的子孩子
         stack = []
         # 在array末尾加一个无限值，为了防止 最后一位是 比stack里的数小，然后append到stack，还没跟其他node连起来
-        for i, num in enumerate(A + [float('inf')]):
+        for num in (A + [float('inf')]):
             cur = TreeNode(num)
             while stack and cur.val > stack[-1].val:
                 pre = stack.pop()

@@ -1,4 +1,5 @@
-class Solution: # return sum in each sliding window, which window length is k
+class Solution:
+    # return sum in each sliding window, which window length is k
     # get sum of first k items
     # for each index between k and len(nums), newsum = sum + nums[i] - nums[i-k]
 

@@ -12,7 +12,7 @@ class Solution:
     @param lists: a list of ListNode
     @return: The head of one sorted list.
     """
-    def mergeKLists(self, lists):
+    def mergeKLists(self, lists): # method 2 --> only put first node in heap
         if not lists:
             return None 
         if len(lists) == 1:

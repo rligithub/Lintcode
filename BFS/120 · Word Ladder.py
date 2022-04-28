@@ -9,7 +9,7 @@ class Solution:
     @return: An integer
     """
     def ladderLength(self, start, end, dict):
-        if not dict or not start or not end:
+        if not dict or not start or not end:course
             return -1
         if start == end:
             return 1

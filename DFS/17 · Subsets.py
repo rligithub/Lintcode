@@ -32,7 +32,24 @@ class Solution2: #recursion --> add current value vs not add current value
             self.dfs(nums, res, path + [nums[i]], i +1)
         return res.append(path)
 
+class Solution:
+    """
+    @param nums: A set of numbers
+    @return: A list of lists
+    """
+    def subsets(self, nums):
+        res = []
+        path = []
+        nums = sorted(nums)
+        self.dfs(nums, 0, res, path)
+        return res
 
+    def dfs(self, nums, pos, res, path):
+        if pos == len(nums):
+            res.append(path)
+            return
+        self.dfs(nums, pos + 1, res, path + [nums[pos]])
+        self.dfs(nums, pos + 1, res, path)
 
 
 nums = [1,2]

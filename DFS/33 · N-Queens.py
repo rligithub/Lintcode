@@ -8,7 +8,7 @@ class Solution:
         # before place Q, need to check if it's validQ -- > make sure it's not in the same column and diagonal line
         # use recursion -> row + 1 , path = "." * i + Q + "." * (n-i)
         res = []
-        nums = [-1] * n
+        nums = [-1] * n # n为row，里面存的是col
         self.dfs(nums, 0, [], res)
         return res
 
@@ -25,6 +25,7 @@ class Solution:
 
     def valid(self, nums, index):
         for i in range(index):
+            # 检查 col是否相同 和 斜线是否相同 (COL1-COL2)/(ROW1-ROW2）
             if nums[i] == nums[index] or abs(nums[i] - nums[index]) == abs(index - i):
                 return False
         return True

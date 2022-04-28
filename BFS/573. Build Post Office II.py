@@ -30,7 +30,7 @@ class Solution:
         res = float('inf')
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == 0 and reach[(i,j)] == houses_num:
+                if grid[i][j] == 0 and reach[(i,j)] == houses_num and distances[i][j] > 0:
                     res = min(res, distances[(i,j)])
 
         if res < float('inf'):

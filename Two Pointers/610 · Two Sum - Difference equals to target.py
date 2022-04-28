@@ -12,14 +12,15 @@ class Solution:
             j = max(j,i + 1) # to make sure j is always after i
             while j < len(nums) and nums[j] - nums[i] < abs(target):
                 j += 1
-            if j > len(nums):
+
+            if j >= len(nums):
                 break
             if nums[j] - nums[i] == abs(target):
                 return [nums[i], nums[j]]
 
 
 
-nums = [2,7,15,24,123,6000]
-target = 108
+nums = [1,2,4]
+target = 4
 a = Solution()
 print(a.twoSum7(nums, target))

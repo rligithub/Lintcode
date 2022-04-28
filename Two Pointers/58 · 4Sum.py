@@ -61,3 +61,4 @@ numbers = [1,2,3,4,5,6,7]
 target = 18
 a = Solution2()
 print(a.fourSum(numbers,target))
+
